@@ -7,7 +7,7 @@ services:
       - 5000:5000
     container_name: rest_flask_api
     environment:
-      - MONGO_URI=mongodb://admin:admin-password@mongodb:27017/user_db
+      - MONGO_URI=mongodb://admin:admin-password@mongodb:27017/userdb
     volumes:
       - .:/app
     depends_on:
@@ -20,6 +20,6 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: admin-password
-      MONGO_INITDB_DATABASE: user_db
+      MONGO_INITDB_DATABASE: userdb
     ports:
       - "27017:27017"
