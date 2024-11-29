@@ -1,0 +1,25 @@
+services:
+
+  api:
+    build:
+      context: .
+    ports:
+      - 5000:5000
+    container_name: rest_flask_api
+    environment:
+      - MONGO_URI=mongodb://admin:admin-password@mongodb:27017/user_db
+    volumes:
+      - .:/app
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo:8.0.4-rc0-noble
+    container_name: mongodb
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin-password
+      MONGO_INITDB_DATABASE: user_db
+    ports:
+      - "27017:27017"
