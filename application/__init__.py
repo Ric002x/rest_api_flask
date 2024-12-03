@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_restful import Api
 
-from .config import init_db, init_db_tests
+from .config import init_db, init_db_prod, init_db_tests
 from .views import UsersAPI
 
 
@@ -12,6 +12,8 @@ def create_app(config=None):
 
     if config == "test":
         init_db_tests()
+    elif config == "prod":
+        init_db_prod()
     else:
         init_db()
 

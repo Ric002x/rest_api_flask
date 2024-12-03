@@ -14,6 +14,13 @@ def init_db():
     )
 
 
+def init_db_prod():
+    db.connect(
+        db=os.getenv("MONGO_DB"),
+        host=os.getenv("MONGODB_URI")
+    )
+
+
 def init_db_tests():
     db.connect('mongoenginetest', host='mongodb://localhost',
                mongo_client_class=mongomock.MongoClient)
