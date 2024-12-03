@@ -1,6 +1,7 @@
 import os
 
 import mongoengine as db
+import mongomock
 
 
 def init_db():
@@ -14,5 +15,5 @@ def init_db():
 
 
 def init_db_tests():
-    db.connect(db='userdb', host="mongomock://localhost",
-               uuidRepresentation='standard')
+    db.connect('mongoenginetest', host='mongodb://localhost',
+               mongo_client_class=mongomock.MongoClient)
