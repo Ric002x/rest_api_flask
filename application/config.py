@@ -11,3 +11,8 @@ def init_db():
         host=os.getenv("MONGO_URI"),
         authentication_source='admin'
     )
+
+
+def init_db_tests():
+    db.connect(db='userdb', host="mongomock://localhost",
+               uuidRepresentation='standard')

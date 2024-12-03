@@ -1,10 +1,8 @@
 from flask import Flask
 from flask_restful import Api
 
-from .config import init_db
-from .views import UserAPI
-
-init_db()
+from .config import init_db, init_db_tests
+from .views import UsersAPI
 
 
 def create_app(config=None):
@@ -12,6 +10,11 @@ def create_app(config=None):
     app = Flask(__name__)
     api = Api(app)
 
-    api.add_resource(UserAPI, "/")
+    if config == "test":
+        init_db_tests()
+    else:
+        init_db()
+
+    api.add_resource(UsersAPI, "/user", "/user/<string:cpf>")
 
     return app
