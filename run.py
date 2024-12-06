@@ -1,6 +1,10 @@
 import os
 
+from dotenv import load_dotenv
+
 from application import create_app
+
+load_dotenv()
 
 config_type = os.getenv("CONFIG_TYPE")
 app = create_app(config_type)
