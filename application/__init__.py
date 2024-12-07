@@ -19,4 +19,8 @@ def create_app(config=None):
 
     api.add_resource(UsersAPI, "/user", "/user/<string:cpf>")
 
+    @app.route('/')
+    def home():
+        return {"message": "this is an API"}
+
     return app
